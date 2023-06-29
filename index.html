@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend API de Productos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+ 
+
+<body>
+    <div id="app">
+        <h1>Listado de Billetes</h1>
+        <div class="contenedor-centrado">
+            <table>
+                <thead>
+                  <tr>
+                    <th>Numero</th>
+                    
+                    <th>Fraccion</th>
+                    <th>Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="producto in billetes" :key="producto.numero">
+                    <td>{{ producto.numero }}</td>
+                    <td>{{ producto.fraccion }}</td>
+                    <td>{{ producto.precio }}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        
+            <h1>Consultar Billetes</h1>
+            <div class="contenedor-centrado">
+            <form @submit.prevent="consultarProducto">
+                <label for="consultanumero">Número de Billete:</label>
+                <input type="number" id="consultaNumero" v-model="consultaNumero" required>
+                <button type="submit">Consultar</button>
+                <div v-if="consultaResultado">{{ consultaResultado }}</div>
+            </form>            
+        </div>
+        
+
+        <h1>Alta de Billete</h1>
+        <form @submit.prevent="altaProducto">
+            <label for="altaNumero">Número:</label>
+            <input type="number" id="altaNumero" v-model="altaNumero" required>
+            <label for="altaFraccion">Fracción:</label>
+            <input type="number" id="altaFraccion" v-model="altaFraccion" required>
+            <label for="altaPrecio">Precio:</label>
+            <input type="number" step="0.01" id="altaPrecio" v-model="altaPrecio" required>
+            <button type="submit">Dar de Alta</button>
+            <div v-if="altaResultado">{{ altaResultado }}</div>
+        </form>
+
+        <h1>Modificar Billetes</h1>
+        <form @submit.prevent="modificarProducto">
+            <label for="modificarNumero">Número:</label>
+            <input type="number" id="modificarNumero" v-model="modificarNumero" required>
+            <label for="modificarNuevofraccion">Nueva Fracción:</label>
+            <input type="number" id="modificarNuevoFraccion" v-model="modificarNuevoFraccion" required>
+            <label for="modificarNuevoPrecio">Nuevo Precio:</label>
+            <input type="number" step="0.01" id="modificarNuevoPrecio" v-model="modificarNuevoPrecio" required>
+            <button type="submit">Modificar</button>
+            <div v-if="modificarResultado">{{ modificarResultado }}</div>
+        </form>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const URL = "http://127.0.0.1:5000"
+        const app = Vue.createApp({
+          data() {
+            return {
+              billetes: [],
+              consultaNumero: '',
+              consultaResultado: '',
+              altaResultado: '',
+              modificarResultado: '',
+              altaNumero: '',
+              altaFraccion: '',
+              altaPrecio: '',
+              modificarNumero: '',
+              modificarNuevoFraccion: '',
+              modificarNuevoPrecio: ''
+            };
+          },
+          methods: {
+            consultarProducto() {
+              fetch(URL + `/billetes/${this.consultaNumero}`)
+                .then(response => response.json())
+                .then(producto => {
+                  if (producto) {
+                    this.consultaResultado = `Número: ${producto.numero}, Fraccion: ${producto.fraccion}, Precio: ${producto.precio}`;
+                  } else {
+                    this.consultaResultado = 'Producto no encontrado';
+                  }
+                })
+                .catch(error => {
+                  console.error(error);
+                  this.consultaResultado = 'Error al realizar la consulta';
+                });
+            },
+            altaProducto() {
+              fetch(URL + '/billetes', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  numero: this.altaNumero,
+                  fraccion: this.altaFraccion,
+                  precio: this.altaPrecio
+                })
+              })
+                .then(response => {
+                  if (response.ok) {
+                    this.altaNumero = '';
+                    this.altaFraccion = '';
+                    this.altaPrecio = '';
+                    this.listarProductos();
+                  } else {
+                    this.altaResultado = 'Alta no efectuada';
+                  }
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+            },
+            modificarProducto() {
+              fetch(URL + `/productos/${this.modificarCodigo}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  descripcion: this.modificarNuevaDescripcion,
+                  stock: this.modificarNuevoStock,
+                  precio: this.modificarNuevoPrecio
+                })
+              })
+                .then(response => {
+                  if (response.ok) {
+                    this.modificarCodigo = '';
+                    this.modificarNuevaDescripcion = '';
+                    this.modificarNuevoStock = '';
+                    this.modificarNuevoPrecio = '';
+                    this.listarProductos();
+                    this.modificarResultado = 'Modificación realizada';
+                  } else {
+                    this.modificarResultado = 'Modificación no efectuada';
+                  }
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+            },
+            listarProductos() {
+              fetch(URL + '/billetes')
+                .then(response => response.json())
+                .then(billetes => {
+                  this.billetes = billetes;
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+            }
+          },
+          mounted() {
+            this.listarProductos();
+          }
+        });
+
+        app.mount('#app');  
+      </script>
+      
+</body>
+
+</html>
