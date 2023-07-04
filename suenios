@@ -1,0 +1,541 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 24-06-2023 a las 21:12:34
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `suenios`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `animales`
+--
+
+CREATE TABLE `animales` (
+  `Animal` varchar(40) DEFAULT NULL,
+  `Anim_ID` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `animales`
+--
+
+INSERT INTO `animales` (`Animal`, `Anim_ID`) VALUES
+('Jirafa', '100A'),
+('Ánguila', '10A'),
+('Burro', '11A'),
+('Cebra', '12A'),
+('Mono', '13A'),
+('Plaga', '14A'),
+('Peludo', '15A'),
+('Gacela', '16A'),
+('Ciempiés', '17A'),
+('Lechuza', '18A'),
+('Garrapata', '19A'),
+('Pollito', '1A'),
+('Peces', '20A'),
+('Mariposa', '21A'),
+('Pavo', '22A'),
+('Patitos', '23A'),
+('Perdiz', '24A'),
+('Caballo', '25A'),
+('Gallina', '26A'),
+('Canguro', '27A'),
+('Medusa', '28A'),
+('Vizcacha', '29A'),
+('Víbora', '2A'),
+('Cangrejo', '30A'),
+('Liebre', '31A'),
+('Cascarudo', '32A'),
+('Mosca', '33A'),
+('Cordero', '34A'),
+('Ñandú', '35A'),
+('Pichón', '36A'),
+('Ballena', '37A'),
+('Piraña', '38A'),
+('Cabra', '39A'),
+('Cachorro', '3A'),
+('Tero', '40A'),
+('Cisne', '41A'),
+('Avispa', '42A'),
+('Pavo real', '43A'),
+('Sapo', '44A'),
+('Oso hormiguero', '45A'),
+('Toro', '46A'),
+('La manada', '47A'),
+('Cigüeña', '48A'),
+('Loro', '49A'),
+('Tordo', '4A'),
+('Camello', '50A'),
+('Foca', '51A'),
+('Las hormigas', '52A'),
+('Delfín', '53A'),
+('Golondrina', '54A'),
+('Vaca', '55A'),
+('Canario', '56A'),
+('Mosquito', '57A'),
+('Pulpo', '58A'),
+('Buitre', '59A'),
+('Gusano', '5A'),
+('Caracol', '60A'),
+('Hornero', '61A'),
+('Tortuga', '62A'),
+('Garza', '63A'),
+('Lobo', '64A'),
+('Cocodrilo', '65A'),
+('Tigre', '66A'),
+('Lombrices', '67A'),
+('Tiburón', '68A'),
+('La esponja', '69A'),
+('Gato', '6A'),
+('Camaleón', '70A'),
+('Flamenco', '71A'),
+('Cerdo', '72A'),
+('Hipopótamo', '73A'),
+('Cucaracha', '74A'),
+('Araña', '75A'),
+('Pingüino', '76A'),
+('Escorpión', '77A'),
+('Conejo', '78A'),
+('Pulga', '79A'),
+('Perro', '7A'),
+('Cuervo', '80A'),
+('Oso', '81A'),
+('Zorrino', '82A'),
+('Gallo', '83A'),
+('Ardilla', '84A'),
+('Abeja', '85A'),
+('Bichito de Luz', '86A'),
+('Cardenal', '87A'),
+('Piojos', '88A'),
+('León', '89A'),
+('Zorro', '8A'),
+('Ratas', '90A'),
+('Vampiro', '91A'),
+('Colibrí', '92A'),
+('Avestruz', '93A'),
+('Paloma', '94A'),
+('Rana', '95A'),
+('Carancho', '96A'),
+('Elefante', '97A'),
+('Grillo', '98A'),
+('Pelícano', '99A'),
+('Lagarto', '9A');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `objetos`
+--
+
+CREATE TABLE `objetos` (
+  `Objeto` varchar(40) NOT NULL,
+  `obj_ID` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `objetos`
+--
+
+INSERT INTO `objetos` (`Objeto`, `obj_ID`) VALUES
+('Los Hermanos', '100C'),
+('Arroyo', '10C'),
+('La Leche', '11C'),
+('Minero', '12C'),
+('Soldado', '13C'),
+('Fraile', '14C'),
+('El borracho', '15C'),
+('La niña bonita', '16C'),
+('Anillo', '17C'),
+('La desgracia', '18C'),
+('Sangre', '19C'),
+('Huevos', '1C'),
+('Pescado', '20C'),
+('La Fiesta', '21C'),
+('Mujer', '22C'),
+('El loco', '23C'),
+('Cocinero', '24C'),
+('El Caballo', '25C'),
+('La Gallina', '26C'),
+('La Misa', '27C'),
+('El Peine', '28C'),
+('El Cerro', '29C'),
+('Agua', '2C'),
+('San Pedro', '30C'),
+('Santa Rosa', '31C'),
+('La Luz', '32C'),
+('La plata', '33C'),
+('Cristo/Jesús', '34C'),
+('Cabeza', '35C'),
+('El Pajarito', '36C'),
+('La Manteca', '37C'),
+('El Dentista', '38C'),
+('Las Piedras', '39C'),
+('Niños', '3C'),
+('La Lluvia', '40C'),
+('El Cura', '41C'),
+('El Cuchillo', '42C'),
+('La Zapatilla', '43C'),
+('El Balcón', '44C'),
+('La Carcel', '45C'),
+('El Vino', '46C'),
+('El Tomate', '47C'),
+('El Muerto', '48C'),
+('El Morto quiparla(El Muerto que habla)', '49C'),
+('San Cono (Buena suerte)', '4C'),
+('La Carne', '50C'),
+('El Pan', '51C'),
+('El Serrucho', '52C'),
+('Madre e Hija', '53C'),
+('El Barco', '54C'),
+('La Vaca', '55C'),
+('La Música', '56C'),
+('La Caída', '57C'),
+('El Jorobado', '58C'),
+('El Ahogado', '59C'),
+('Cama', '5C'),
+('Las Plantas', '60C'),
+('La Virgen', '61C'),
+('La Escopeta', '62C'),
+('La Inundación', '63C'),
+('Las Bodas', '64C'),
+('Llantos', '65C'),
+('El Cazador', '66C'),
+('Las Lombrices', '67C'),
+('La Mordida', '68C'),
+('Los Sobrinos', '69C'),
+('Gato', '6C'),
+('Los Vicios', '70C'),
+('Muerto de Sueño', '71C'),
+('Excremento/Caca', '72C'),
+('La Sorpresa', '73C'),
+('El Rengo', '74C'),
+('El Negro', '75C'),
+('El Payaso', '76C'),
+('Las Llamas(Fuego)', '77C'),
+('Piernas', '78C'),
+('La Ramera', '79C'),
+('Perro', '7C'),
+('Ladrones', '80C'),
+('Las Bochas', '81C'),
+('Las Flores', '82C'),
+('La Pelea', '83C'),
+('Mal Tiempo', '84C'),
+('La Iglesia', '85C'),
+('La Linterna', '86C'),
+('El Humo', '87C'),
+('Los Piojos', '88C'),
+('El Papa', '89C'),
+('Revolver', '8C'),
+('Los Ratones', '90C'),
+('El Miedo', '91C'),
+('El Pintor', '92C'),
+('El Médico', '93C'),
+('El Enamorado', '94C'),
+('El Cementerio', '95C'),
+('Los Anteojos', '96C'),
+('El Marido', '97C'),
+('La Mesa', '98C'),
+('La Lavandera', '99C'),
+('Incendio', '9C');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `profesiones`
+--
+
+CREATE TABLE `profesiones` (
+  `Profesión` varchar(30) NOT NULL,
+  `profe_ID` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `profesiones`
+--
+
+INSERT INTO `profesiones` (`Profesión`, `profe_ID`) VALUES
+('Viajante', '100B'),
+('Diseñador', '10B'),
+('Repostero', '11B'),
+('Ferretero', '12B'),
+('Soldado', '13B'),
+('Jubilado', '14B'),
+('Barman', '15B'),
+('Modista', '16B'),
+('Secretaria', '17B'),
+('Abogado', '18B'),
+('Chofer', '19B'),
+('Almacenero', '1B'),
+('Pescador', '20B'),
+('Bailarina', '21B'),
+('Ama de Casa', '22B'),
+('Psicólogo', '23B'),
+('Cocinero', '24B'),
+('Jockey', '25B'),
+('Feriante', '26B'),
+('Cantante', '27B'),
+('Peluquero', '28B'),
+('Astrólogo', '29B'),
+('Plomero', '2B'),
+('Farmacéutico', '30B'),
+('Planografista', '31B'),
+('Electricista', '32B'),
+('Quinielero', '33B'),
+('Eclesiástico', '34B'),
+('Contador', '35B'),
+('Pintor', '36B'),
+('Transportista', '37B'),
+('Dentista', '38B'),
+('Vidriero', '39B'),
+('Maestro', '3B'),
+('Sodero', '40B'),
+('Profesor', '41B'),
+('Afilador', '42B'),
+('Joyero', '43B'),
+('Ferroviario', '44B'),
+('Cajero', '45B'),
+('Portero', '46B'),
+('Fumigador', '47B'),
+('Fotógrafo', '48B'),
+('Vendedor', '49B'),
+('Artesano', '4B'),
+('Carnicero', '50B'),
+('Panadero', '51B'),
+('Carpintero', '52B'),
+('Doméstica', '53B'),
+('Marinero', '54B'),
+('Tapicero', '55B'),
+('Músico', '56B'),
+('Masajista', '57B'),
+('Zapatero', '58B'),
+('Guardavidas', '59B'),
+('Herrero', '5B'),
+('Jardinero', '60B'),
+('Telefonista', '61B'),
+('Locutor', '62B'),
+('Ingeniero', '63B'),
+('Químico', '64B'),
+('Obrero', '65B'),
+('Taxista', '66B'),
+('Agricultor', '67B'),
+('Político', '68B'),
+('Librero', '69B'),
+('Gomero', '6B'),
+('Buscavidas', '70B'),
+('Heladero', '71B'),
+('Bancario', '72B'),
+('Diariero', '73B'),
+('Pedicura', '74B'),
+('Albañil', '75B'),
+('Actor', '76B'),
+('Periodista', '77B'),
+('Enfermera', '78B'),
+('Prostituta', '79B'),
+('Veterinario', '7B'),
+('Cerrajero', '80B'),
+('Modelo', '81B'),
+('Florista', '82B'),
+('Deportista', '83B'),
+('Cartero', '84B'),
+('Arquitecto', '85B'),
+('Mecánico', '86B'),
+('Parrillero', '87B'),
+('Cadete', '88B'),
+('Sastre', '89B'),
+('Policía', '8B'),
+('Kiosquero', '90B'),
+('Fletero', '91B'),
+('Gasista', '92B'),
+('Médico', '93B'),
+('Técnico', '94B'),
+('Funebrero', '95B'),
+('Oculista', '96B'),
+('Empleado', '97B'),
+('Mozo', '98B'),
+('Detective', '99B'),
+('Bombero', '9B');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `todos`
+--
+
+CREATE TABLE `todos` (
+  `Número` varchar(2) NOT NULL,
+  `Animales` varchar(4) NOT NULL,
+  `Objetos` varchar(4) NOT NULL,
+  `Profesiones` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `todos`
+--
+
+INSERT INTO `todos` (`Número`, `Animales`, `Objetos`, `Profesiones`) VALUES
+('00', '1A', '1C', '1B'),
+('01', '2A', '2C', '2B'),
+('02', '3A', '3C', '3B'),
+('03', '4A', '4C', '4B'),
+('04', '5A', '5C', '5B'),
+('05', '6A', '6C', '6B'),
+('06', '7A', '7C', '7B'),
+('07', '8A', '8C', '8B'),
+('08', '9A', '9C', '9B'),
+('09', '10A', '10C', '10B'),
+('10', '11A', '11C', '11B'),
+('11', '12A', '12C', '12B'),
+('12', '13A', '13C', '13B'),
+('13', '14A', '14C', '14B'),
+('14', '15A', '15C', '15B'),
+('15', '16A', '16C', '16B'),
+('16', '17A', '17C', '17B'),
+('17', '18A', '18C', '18B'),
+('18', '19A', '19C', '19B'),
+('19', '20A', '20C', '20B'),
+('20', '21A', '21C', '21B'),
+('21', '22A', '22C', '22B'),
+('22', '23A', '23C', '23B'),
+('23', '24A', '24C', '24B'),
+('24', '25A', '25C', '25B'),
+('25', '26A', '26C', '26B'),
+('26', '27A', '27C', '27B'),
+('27', '28A', '28C', '28B'),
+('28', '29A', '29C', '29B'),
+('29', '30A', '30C', '30B'),
+('30', '31A', '31C', '31B'),
+('31', '32A', '32C', '32B'),
+('32', '33A', '33C', '33B'),
+('33', '34A', '34C', '34B'),
+('34', '35A', '35C', '35B'),
+('35', '36A', '36C', '36B'),
+('36', '37A', '37C', '37B'),
+('37', '38A', '38C', '38B'),
+('38', '39A', '39C', '39B'),
+('39', '40A', '40C', '40B'),
+('40', '41A', '41C', '41B'),
+('41', '42A', '42C', '42B'),
+('42', '43A', '43C', '43B'),
+('43', '44A', '44C', '44B'),
+('44', '45A', '45C', '45B'),
+('45', '46A', '46C', '46B'),
+('46', '47A', '47C', '47B'),
+('47', '48A', '48C', '48B'),
+('48', '49A', '49C', '49B'),
+('49', '50A', '50C', '50B'),
+('50', '51A', '51C', '51B'),
+('51', '52A', '52C', '52B'),
+('52', '53A', '53C', '53B'),
+('53', '54A', '54C', '54B'),
+('54', '55A', '55C', '55B'),
+('55', '56A', '56C', '56B'),
+('56', '57A', '57C', '57B'),
+('57', '58A', '58C', '58B'),
+('58', '59A', '59C', '59B'),
+('59', '60A', '60C', '60B'),
+('60', '61A', '61C', '61B'),
+('61', '62A', '62C', '62B'),
+('62', '63A', '63C', '63B'),
+('63', '64A', '64C', '64B'),
+('64', '65A', '65C', '65B'),
+('65', '66A', '66C', '66B'),
+('66', '67A', '67C', '67B'),
+('67', '68A', '68C', '68B'),
+('68', '69A', '69C', '69B'),
+('69', '70A', '70C', '70B'),
+('70', '71A', '71C', '71B'),
+('71', '72A', '72C', '72B'),
+('72', '73A', '73C', '73B'),
+('73', '74A', '74C', '74B'),
+('74', '75A', '75C', '75B'),
+('75', '76A', '76C', '76B'),
+('76', '77A', '77C', '77B'),
+('77', '78A', '78C', '78B'),
+('78', '79A', '79C', '79B'),
+('79', '80A', '80C', '80B'),
+('80', '81A', '81C', '81B'),
+('81', '82A', '82C', '82B'),
+('82', '83A', '83C', '83B'),
+('83', '84A', '84C', '84B'),
+('84', '85A', '85C', '85B'),
+('85', '86A', '86C', '86B'),
+('86', '87A', '87C', '87B'),
+('87', '88A', '88C', '88B'),
+('88', '89A', '89C', '89B'),
+('89', '90A', '90C', '90B'),
+('90', '91A', '91C', '91B'),
+('91', '92A', '92C', '92B'),
+('92', '93A', '93C', '93B'),
+('93', '94A', '94C', '94B'),
+('94', '95A', '95C', '95B'),
+('95', '96A', '96C', '96B'),
+('96', '97A', '97C', '97B'),
+('97', '98A', '98C', '98B'),
+('98', '99A', '99C', '99B'),
+('99', '100A', '100C', '100B');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `animales`
+--
+ALTER TABLE `animales`
+  ADD PRIMARY KEY (`Anim_ID`);
+
+--
+-- Indices de la tabla `objetos`
+--
+ALTER TABLE `objetos`
+  ADD PRIMARY KEY (`obj_ID`);
+
+--
+-- Indices de la tabla `profesiones`
+--
+ALTER TABLE `profesiones`
+  ADD PRIMARY KEY (`profe_ID`);
+
+--
+-- Indices de la tabla `todos`
+--
+ALTER TABLE `todos`
+  ADD PRIMARY KEY (`Número`),
+  ADD KEY `Objetos` (`Objetos`),
+  ADD KEY `Profesiones` (`Profesiones`),
+  ADD KEY `fk_Todos_Animales` (`Animales`) USING BTREE;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `todos`
+--
+ALTER TABLE `todos`
+  ADD CONSTRAINT `fk_Todos_Animales` FOREIGN KEY (`Animales`) REFERENCES `animales` (`Anim_ID`),
+  ADD CONSTRAINT `todos_ibfk_1` FOREIGN KEY (`Objetos`) REFERENCES `objetos` (`obj_ID`),
+  ADD CONSTRAINT `todos_ibfk_2` FOREIGN KEY (`Profesiones`) REFERENCES `profesiones` (`profe_ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
