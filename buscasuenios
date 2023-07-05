@@ -1,0 +1,86 @@
+import sqlite3
+from flask import Flask,  jsonify, request
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+DATABASE='suenios.sql'
+
+def get_db_connection():
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def create_table():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS productos (
+            codigo INTEGER PRIMARY KEY,
+            descripcion TEXT NOT NULL,
+            cantidad INTEGER NOT NULL,
+            precio REAL NOT NULL
+        )
+    ''')
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def create_database():
+    conn = sqlite3.connect(DATABASE)
+    conn.close()
+    create_table()
+
+# Crear la base de datos y la tabla si no existen
+create_database()
+#------------------------------------------------------------------
+class Suenios:
+    def __init__(self, descripcion, codigo):
+        self.codigo = codigo
+        self.descripcion = descripcion
+#---------------------------------------------------------------------
+class todosLosSuenios:
+    def __init__(self):
+        self.conexion = get_db_connection()
+        self.cursor = self.conexion.cursor()
+
+    def consultar_suenio(self, codigo):
+        self.cursor.execute("SELECT * FROM productos WHERE codigo = ?", (codigo,))
+        row = self.cursor.fetchone()
+        if row:
+            descripcion, codigo = row
+            return Suenios(descripcion, codigo)
+        return None
+
+#    def listar_suenios(self):
+#        self.cursor.execute("SELECT * FROM productos")
+#        rows = self.cursor.fetchall()
+#        productos = []
+#        for row in rows:
+#            codigo, descripcion, cantidad, precio = row
+#            producto = {'codigo': codigo, 'descripcion': descripcion, 'cantidad': cantidad, 'precio': precio}
+#            productos.append(producto)
+#        return jsonify(productos), 200
+
+
+#--------------------------------------------------------------------
+# Configuración y rutas de la API Flask
+# -------------------------------------------------------------------
+
+inventario = todosLosSuenios()   # Instanciamos la tabla que enlaza todo
+
+# Ruta para obtener los datos de un producto según su código
+@app.route('/Suenios/<int:codigo>', methods=['GET'])
+def obtener_Suenios(codigo):
+    producto = inventario.consultar_Suenios(codigo)
+    if producto:
+        return jsonify({
+            'codigo': Suenios.codigo,
+            'descripcion': Suenios.descripcion,
+        }), 200
+    return jsonify({'message': 'Producto no encontrado.'}), 404
+
+# Finalmente, si estamos ejecutando este archivo, lanzamos app.
+if __name__ == '__main__':
+    app.run()
